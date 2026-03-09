@@ -10,7 +10,7 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT employee_id, first_name, last_name, email, phone_number, salary FROM employees";
+$sql = "SELECT * FROM `view_hr_management`";
 $result = $conn->query($sql);
 ?>
 
@@ -64,12 +64,13 @@ table{
 
 <thead class="table-dark">
 <tr>
-<th>ID</th>
-<th>First Name</th>
-<th>Last Name</th>
-<th>Email</th>
-<th>Phone No.</th>
-<th>Salary</th>
+<th>Employee ID</th>
+<th>Name</th>
+<th>Job Title</th>
+<th>Employment Date</th>
+<th>Manager Name</th>
+<th>Department Name</th>
+<th>Location</th>
 </tr>
 </thead>
 
@@ -80,12 +81,13 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 
         echo "<tr>";
-        echo "<td>".$row['employee_id']."</td>";
-        echo "<td>".$row['first_name']."</td>";
-        echo "<td>".$row['last_name']."</td>";
-        echo "<td>".$row['email']."</td>";
-        echo "<td>".$row['phone_number']."</td>";
-        echo "<td>".$row['salary']."</td>";
+        echo "<td>".$row['Employee ID']."</td>";
+        echo "<td>".$row['Full_name']."</td>";
+        echo "<td>".$row['Job Title']."</td>";
+        echo "<td>".$row['Employee Date']."</td>";
+        echo "<td>".$row['Manager Name']."</td>";
+        echo "<td>".$row['Department Name']."</td>";
+        echo "<td>".$row['Location']."</td>";
         echo "</tr>";
 
     }
